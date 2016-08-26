@@ -1,5 +1,6 @@
 package chat.client;
 
+import chat.client.command.CommandExecutor;
 import chat.client.exception.InterruptOperationException;
 
 import java.util.ResourceBundle;

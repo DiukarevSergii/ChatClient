@@ -13,6 +13,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class InfoCommand implements Command {
     private ResourceBundle res
@@ -40,12 +41,10 @@ public class InfoCommand implements Command {
                 is.read(buf);
 
                 Gson gson = new GsonBuilder().create();
-                Map<String, Boolean> usersOnline = gson.fromJson(new String(buf), Map.class);
+                Set<String> usersOnline = gson.fromJson(new String(buf), Set.class);
                 String online = "";
-                for (Map.Entry<String, Boolean> pair : usersOnline.entrySet()) {
-                    if (pair.getValue() == true) {
-                        online += pair.getKey() + ", ";
-                    }
+                for (String user : usersOnline) {
+                        online += user + ", ";
                 }
                 ConsoleHelper.writeMessage(online.substring(0, online.length() - 2));
             }
