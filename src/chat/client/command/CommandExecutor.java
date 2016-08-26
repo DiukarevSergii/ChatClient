@@ -14,9 +14,10 @@ public final class CommandExecutor {
     static Map<Operation, Command> operationCommandMap = new HashMap<>();
 
     static {
-//        operationCommandMap.put(Operation.INFO, new InfoCommand());
-//        operationCommandMap.put(Operation.EXIT, new ExitCommand());
+        operationCommandMap.put(Operation.EXIT, new ExitCommand());
+        operationCommandMap.put(Operation.ENTER, new EnterCommand());
         operationCommandMap.put(Operation.LOGIN, new LoginCommand());
+        operationCommandMap.put(Operation.INFO, new InfoCommand());
     }
 
     public static final void execute(Operation operation) throws InterruptOperationException {

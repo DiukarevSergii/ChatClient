@@ -18,7 +18,6 @@ public class ConsoleHelper {
         String line = "";
         line = scanner.nextLine().trim();
         if (line.equalsIgnoreCase("EXIT")) {
-            ConsoleHelper.writeMessage(res.getString("the.end"));
             throw new InterruptOperationException();
         }
         return line;
@@ -29,8 +28,9 @@ public class ConsoleHelper {
         Operation operation = null;
         while (operation == null) {
             try {
-                ConsoleHelper.writeMessage(String.format("Select the operation: 1 - %s, 2 - %s, 3 - %s, 4 - %s;",
+                ConsoleHelper.writeMessage(String.format(res.getString("select"),
                         res.getString("operation.INFO"),
+                        res.getString("operation.ENTER"),
                         res.getString("operation.EXIT")));
 
                 operation = Operation.getAllowableOperationByOrdinal(Integer.parseInt(readString()));
