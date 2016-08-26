@@ -32,6 +32,7 @@ public class ConsoleHelper {
                 ConsoleHelper.writeMessage(String.format(res.getString("select"),
                         res.getString("operation.INFO"),
                         res.getString("operation.ENTER"),
+                        res.getString("operation.STATUS"),
                         res.getString("operation.EXIT")));
 
                 operation = Operation.getAllowableOperationByOrdinal(Integer.parseInt(readString()));

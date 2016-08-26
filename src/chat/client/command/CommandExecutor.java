@@ -18,6 +18,7 @@ public final class CommandExecutor {
         operationCommandMap.put(Operation.ENTER, new EnterCommand());
         operationCommandMap.put(Operation.LOGIN, new LoginCommand());
         operationCommandMap.put(Operation.INFO, new InfoCommand());
+        operationCommandMap.put(Operation.STATUS, new StatusCommand());
     }
 
     public static final void execute(Operation operation) throws InterruptOperationException {
