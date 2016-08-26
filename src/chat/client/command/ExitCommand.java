@@ -22,16 +22,17 @@ class ExitCommand implements Command {
         String answer = ConsoleHelper.readString();
         if (answer.equalsIgnoreCase(res.getString("yes"))) {
             ConsoleHelper.writeMessage(res.getString("thank.message"));
-            try {
-                URL url = new URL(String.format(res.getString("delete"), LoginCommand.login));
-                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
-                connection.setRequestMethod("DELETE");
-                connection.setDoOutput(true);
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        }
+
+        try {
+            URL url = new URL(String.format(res.getString("delete"), LoginCommand.login));
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("DELETE");
+            connection.setDoOutput(true);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
