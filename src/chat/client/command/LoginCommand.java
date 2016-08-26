@@ -53,42 +53,6 @@ public class LoginCommand implements Command {
         }
         ConsoleHelper.writeMessage(res.getString("success.format"));
     }
-
-//    private String authorization() throws InterruptOperationException {
-//        Locale.setDefault(Locale.ENGLISH);
-//
-//        ConsoleHelper.writeMessage(res.getString("before"));
-//        String login = "";
-//
-//        HttpURLConnection connection;
-//        while (true) {
-//            ConsoleHelper.writeMessage(res.getString("enter.login"));
-//            login = ConsoleHelper.readString();
-//            ConsoleHelper.writeMessage(res.getString("enter.password"));
-//            String pass = ConsoleHelper.readString();
-//
-//            try {
-//                URL url = new URL(String.format(res.getString("address.login"), login, pass));
-//                connection = (HttpURLConnection) url.openConnection();
-//                connection.setRequestMethod("POST");
-//                connection.setDoOutput(true);
-//                if (connection.getResponseCode() == 200) {
-//                    break;
-//                } else {
-//                    ConsoleHelper.writeMessage(res.getString("incorrect"));
-//                    ConsoleHelper.writeMessage(res.getString("specify.data"));
-//                }
-//            } catch (ProtocolException e) {
-//                e.printStackTrace();
-//            } catch (MalformedURLException e) {
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            ConsoleHelper.writeMessage("");
-//        }
-//        return login;
-//    }
 }
 
 
