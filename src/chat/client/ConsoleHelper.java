@@ -31,7 +31,8 @@ public class ConsoleHelper {
             try {
                 ConsoleHelper.writeMessage(String.format(res.getString("select"),
                         res.getString("operation.INFO"),
-                        res.getString("operation.ENTER"),
+                        res.getString("operation.PUBLIC_MESSAGE"),
+                        res.getString("operation.PRIVATE_MESSAGE"),
                         res.getString("operation.STATUS"),
                         res.getString("operation.EXIT")));
 

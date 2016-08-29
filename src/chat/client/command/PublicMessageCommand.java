@@ -13,12 +13,14 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class EnterCommand implements Command {
-    private ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "enter_en");
+public class PublicMessageCommand implements Command {
+    private static ResourceBundle res
+            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "publicMessage_en");
 
     @Override
     public void execute() throws InterruptOperationException {
+        ConsoleHelper.writeMessage(res.getString("type"));
+
         GetThread th = new GetThread();
         th.setDaemon(true);
         th.start();
@@ -32,27 +34,32 @@ public class EnterCommand implements Command {
             m.setText(text);
             m.setFrom(LoginCommand.login);
 
-            try {
-                int send = m.send(res.getString("address.add"));
-                if (send != 200) {
-                    ConsoleHelper.writeMessage(res.getString("error.http") + send);
-                    return;
-                }
-            } catch (IOException ex) {
-                ConsoleHelper.writeMessage(res.getString("error") + ex.getMessage());
-                return;
-            }
+            if (sendMessage(m)) return;
         }
     }
 
-    private class GetThread extends Thread {
+    static boolean sendMessage(Message m) {
+        try {
+            int send = m.send(res.getString("address.add"));
+            if (send != 200) {
+                ConsoleHelper.writeMessage(res.getString("error.http") + send);
+                return true;
+            }
+        } catch (IOException ex) {
+            ConsoleHelper.writeMessage(res.getString("error") + ex.getMessage());
+            return true;
+        }
+        return false;
+    }
+
+    static class GetThread extends Thread {
         private int n;
 
         @Override
         public void run() {
             try {
                 while (!isInterrupted()) {
-                    URL url = new URL(res.getString("address.get") + n);
+                    URL url = new URL(String.format(res.getString("address.get"), n));
                     HttpURLConnection http = (HttpURLConnection) url.openConnection();
 
                     try (InputStream is = http.getInputStream()) {
@@ -65,7 +72,9 @@ public class EnterCommand implements Command {
                             Message[] list = gson.fromJson(new String(buf), Message[].class);
 
                             for (Message m : list) {
-                                ConsoleHelper.writeMessage(m.toString());
+                                if (m.getTo().equals(LoginCommand.login) || m.getTo().equals("ALL")) {
+                                    ConsoleHelper.writeMessage(m.toString());
+                                }
                                 n++;
                             }
                         }

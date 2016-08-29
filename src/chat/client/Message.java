@@ -12,7 +12,7 @@ public class Message {
 
     private Date date = new Date();
     private String from;
-    private String to;
+    private String to = "ALL";
     private String text;
 
     public String  toJSON() {

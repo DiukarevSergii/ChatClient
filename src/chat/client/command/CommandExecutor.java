@@ -15,7 +15,8 @@ public final class CommandExecutor {
 
     static {
         operationCommandMap.put(Operation.EXIT, new ExitCommand());
-        operationCommandMap.put(Operation.ENTER, new EnterCommand());
+        operationCommandMap.put(Operation.PUBLIC_MESSAGE, new PublicMessageCommand());
+        operationCommandMap.put(Operation.PRIVATE_MESSAGE, new PrivateMessageCommand());
         operationCommandMap.put(Operation.LOGIN, new LoginCommand());
         operationCommandMap.put(Operation.INFO, new InfoCommand());
         operationCommandMap.put(Operation.STATUS, new StatusCommand());
