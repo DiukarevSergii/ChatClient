@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 
 public class PublicMessageCommand implements Command {
     private static ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "publicMessage_en");
+            = ResourceBundle.getBundle("publicMessage_en");
 
     @Override
     public void execute() throws InterruptOperationException {

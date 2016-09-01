@@ -17,7 +17,7 @@ import java.util.Set;
 
 public class InfoCommand implements Command {
     private ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "info_en");
+            = ResourceBundle.getBundle("info_en");
 
     @Override
     public void execute() throws InterruptOperationException {

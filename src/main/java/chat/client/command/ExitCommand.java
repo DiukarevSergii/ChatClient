@@ -14,7 +14,7 @@ import java.util.ResourceBundle;
 class ExitCommand implements Command {
 
     private ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "exit_en");
+            = ResourceBundle.getBundle("exit_en");
 
     @Override
     public void execute() throws InterruptOperationException {

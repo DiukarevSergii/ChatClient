@@ -10,7 +10,7 @@ import java.util.ResourceBundle;
 
 public class PrivateMessageCommand implements Command {
     private ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "privateMessage_en");
+            = ResourceBundle.getBundle("privateMessage_en");
 
     @Override
     public void execute() throws InterruptOperationException {

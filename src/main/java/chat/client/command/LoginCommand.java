@@ -15,7 +15,7 @@ import java.util.ResourceBundle;
 public class LoginCommand implements Command {
 
     private ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "login_en");
+            = ResourceBundle.getBundle("login_en");
 
     public static String login;
 
@@ -30,6 +30,7 @@ public class LoginCommand implements Command {
             login = ConsoleHelper.readString();
             ConsoleHelper.writeMessage(res.getString("enter.password"));
             String pass = ConsoleHelper.readString();
+            System.out.println(String.format(res.getString("address.login"), login, pass));
 
             try {
                 URL url = new URL(String.format(res.getString("address.login"), login, pass));
@@ -39,6 +40,7 @@ public class LoginCommand implements Command {
                 if (connection.getResponseCode() == 200) {
                     break;
                 } else {
+                    System.out.println(connection.getResponseCode());
                     ConsoleHelper.writeMessage(res.getString("incorrect"));
                     ConsoleHelper.writeMessage(res.getString("specify.data"));
                 }

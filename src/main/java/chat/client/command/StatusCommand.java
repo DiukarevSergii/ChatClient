@@ -12,7 +12,7 @@ import java.util.ResourceBundle;
 
 public class StatusCommand implements Command {
     private ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "status_en");
+            = ResourceBundle.getBundle("status_en");
 
     @Override
     public void execute() throws InterruptOperationException {

@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class ConsoleHelper {
     public static Scanner scanner = new Scanner(System.in);
     public static ResourceBundle res
-            = ResourceBundle.getBundle(Chat.RESOURCE_PATH + "common_en");
+            = ResourceBundle.getBundle("common_en");
 
     public static void writeMessage(String message) {
         System.out.println(message);
