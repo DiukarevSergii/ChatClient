@@ -30,7 +30,6 @@ public class LoginCommand implements Command {
             login = ConsoleHelper.readString();
             ConsoleHelper.writeMessage(res.getString("enter.password"));
             String pass = ConsoleHelper.readString();
-            System.out.println(String.format(res.getString("address.login"), login, pass));
 
             try {
                 URL url = new URL(String.format(res.getString("address.login"), login, pass));
