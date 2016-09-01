@@ -1,6 +1,5 @@
 package chat.client.command;
 
-import chat.client.Chat;
 import chat.client.ConsoleHelper;
 import chat.client.exception.InterruptOperationException;
 import com.google.gson.Gson;
@@ -11,7 +10,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.Set;
 
@@ -35,6 +33,12 @@ public class InfoCommand implements Command {
         }
 
         try (InputStream is = connection.getInputStream()) {
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
             int sz = is.available();
             if (sz > 0) {
                 byte[] buf = new byte[is.available()];
@@ -44,7 +48,7 @@ public class InfoCommand implements Command {
                 Set<String> usersOnline = gson.fromJson(new String(buf), Set.class);
                 String online = "";
                 for (String user : usersOnline) {
-                        online += user + ", ";
+                    online += user + ", ";
                 }
                 ConsoleHelper.writeMessage(online.substring(0, online.length() - 2));
             }

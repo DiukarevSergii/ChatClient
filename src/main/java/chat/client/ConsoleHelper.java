@@ -1,6 +1,5 @@
 package chat.client;
 
-import chat.client.command.CommandExecutor;
 import chat.client.exception.InterruptOperationException;
 
 import java.util.ResourceBundle;
@@ -37,6 +36,7 @@ public class ConsoleHelper {
                         res.getString("operation.EXIT")));
 
                 operation = Operation.getAllowableOperationByOrdinal(Integer.parseInt(readString()));
+
             } catch (IllegalArgumentException e) {
                 operation = null;
                 ConsoleHelper.writeMessage(res.getString("invalid.data"));
